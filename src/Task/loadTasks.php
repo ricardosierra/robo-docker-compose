@@ -9,6 +9,7 @@ trait loadTasks
 {
     /**
      * Docker compose up task.
+     * @return \Droath\RoboDockerCompose\Task\Up
      */
     protected function taskDockerComposeUp($pathToDockerCompose = null)
     {
@@ -17,6 +18,7 @@ trait loadTasks
 
     /**
      * Docker compose ps task.
+     * @return \Droath\RoboDockerCompose\Task\Ps
      */
     protected function taskDockerComposePs($pathToDockerCompose = null)
     {
@@ -25,6 +27,7 @@ trait loadTasks
 
     /**
      * Docker compose logs task.
+     * @return \Droath\RoboDockerCompose\Task\Logs
      */
     protected function taskDockerComposeLogs($pathToDockerCompose = null)
     {
@@ -33,6 +36,7 @@ trait loadTasks
 
     /**
      * Docker compose down task.
+     * @return \Droath\RoboDockerCompose\Task\Down
      */
     protected function taskDockerComposeDown($pathToDockerCompose = null)
     {
@@ -41,6 +45,7 @@ trait loadTasks
 
     /**
      * Docker compose pause task.
+     * @return \Droath\RoboDockerCompose\Task\Pause
      */
     protected function taskDockerComposePause($pathToDockerCompose = null)
     {
@@ -49,6 +54,7 @@ trait loadTasks
 
     /**
      * Docker compose pull task.
+     * @return \Droath\RoboDockerCompose\Task\Pull
      */
     protected function taskDockerComposePull($pathToDockerCompose = null)
     {
@@ -57,6 +63,7 @@ trait loadTasks
 
     /**
      * Docker compose start task.
+     * @return \Droath\RoboDockerCompose\Task\Start
      */
     protected function taskDockerComposeStart($pathToDockerCompose = null)
     {
@@ -65,6 +72,7 @@ trait loadTasks
 
     /**
      * Docker compose restart task.
+     * @return \Droath\RoboDockerCompose\Task\Restart
      */
     protected function taskDockerComposeRestart($pathToDockerCompose = null)
     {
@@ -73,6 +81,7 @@ trait loadTasks
 
     /**
      * Docker compose execute task.
+     * @return \Droath\RoboDockerCompose\Task\Execute
      */
     protected function taskDockerComposeExecute($pathToDockerCompose = null)
     {
@@ -81,6 +90,7 @@ trait loadTasks
 
     /**
      * Docker compose run task.
+     * @return \Droath\RoboDockerCompose\Task\Run
      */
     protected function taskDockerComposeRun($pathToDockerCompose = null)
     {
@@ -89,6 +99,7 @@ trait loadTasks
 
     /**
      * Docker compose build task.
+     * @return \Droath\RoboDockerCompose\Task\Build
      */
     protected function taskDockerComposeBuild($pathToDockerCompose = null)
     {
