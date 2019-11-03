@@ -94,4 +94,13 @@ trait loadTasks
     {
         return $this->task(Build::class, $pathToDockerCompose);
     }
+
+    /**
+     * Docker compose build task.
+     * @return \Droath\RoboDockerCompose\Task\Stop
+     */
+    protected function taskDockerComposeStop($pathToDockerCompose = null)
+    {
+        return $this->task(Stop::class, $pathToDockerCompose);
+    }
 }
