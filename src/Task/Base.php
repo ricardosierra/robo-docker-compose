@@ -58,11 +58,12 @@ abstract class Base extends BaseTask implements CommandInterface
      */
     public function file($filename)
     {
-        if (!file_exists($filename)) {
-            throw new \InvalidArgumentException(
-                sprintf("File %s wasn't found on the filesystem", $filename)
-            );
-        }
+        // FIXME: does not work with working directory option
+        //if (!file_exists($filename)) {
+        //    throw new \InvalidArgumentException(
+        //        sprintf("File %s wasn't found on the filesystem", $filename)
+        //    );
+        //}
 
         $this->execOption('file', $filename);
 
