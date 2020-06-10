@@ -1,5 +1,5 @@
 {
-    "name": "droath/robo-docker-compose",
+    "name": "ricardosierra/robo-docker-compose",
     "description": "Docker compose for Robo Task Runner",
     "license": "MIT",
     "keywords": ["docker", "compose", "robo", "task runner"],
