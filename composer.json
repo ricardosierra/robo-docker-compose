@@ -16,6 +16,8 @@
             "Droath\\RoboDockerCompose\\": "./src"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "replace": {
         "droath/robo-docker-compose":"*"
     }
