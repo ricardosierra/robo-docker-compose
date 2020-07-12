@@ -663,6 +663,7 @@ return array(
     'SebastianBergmann\\Type\\Exception' => $vendorDir . '/sebastian/type/src/exception/Exception.php',
     'SebastianBergmann\\Type\\GenericObjectType' => $vendorDir . '/sebastian/type/src/GenericObjectType.php',
     'SebastianBergmann\\Type\\IterableType' => $vendorDir . '/sebastian/type/src/IterableType.php',
+    'SebastianBergmann\\Type\\MixedType' => $vendorDir . '/sebastian/type/src/MixedType.php',
     'SebastianBergmann\\Type\\NullType' => $vendorDir . '/sebastian/type/src/NullType.php',
     'SebastianBergmann\\Type\\ObjectType' => $vendorDir . '/sebastian/type/src/ObjectType.php',
     'SebastianBergmann\\Type\\ReflectionMapper' => $vendorDir . '/sebastian/type/src/ReflectionMapper.php',
