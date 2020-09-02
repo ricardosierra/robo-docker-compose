@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit941b98cd7cf929f2c887dc490e4854b5
+class ComposerStaticInit360b010f6695bae80ad6c489c245dc09
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -524,7 +524,6 @@ class ComposerStaticInit941b98cd7cf929f2c887dc490e4854b5
         'PHPUnit\\Util\\FileLoader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/FileLoader.php',
         'PHPUnit\\Util\\Filesystem' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filesystem.php',
         'PHPUnit\\Util\\Filter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filter.php',
-        'PHPUnit\\Util\\Getopt' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Getopt.php',
         'PHPUnit\\Util\\GlobalState' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/GlobalState.php',
         'PHPUnit\\Util\\InvalidDataSetException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/InvalidDataSetException.php',
         'PHPUnit\\Util\\Json' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Json.php',
@@ -627,6 +626,12 @@ class ComposerStaticInit941b98cd7cf929f2c887dc490e4854b5
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
+        'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
+        'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',
+        'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',
+        'SebastianBergmann\\CliParser\\Parser' => __DIR__ . '/..' . '/sebastian/cli-parser/src/Parser.php',
+        'SebastianBergmann\\CliParser\\RequiredOptionArgumentMissingException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/RequiredOptionArgumentMissingException.php',
+        'SebastianBergmann\\CliParser\\UnknownOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/UnknownOptionException.php',
         'SebastianBergmann\\CodeCoverage\\BranchAndPathCoverageNotSupportedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/BranchAndPathCoverageNotSupportedException.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CrapIndex' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CrapIndex.php',
@@ -833,10 +838,10 @@ class ComposerStaticInit941b98cd7cf929f2c887dc490e4854b5
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit941b98cd7cf929f2c887dc490e4854b5::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit941b98cd7cf929f2c887dc490e4854b5::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit941b98cd7cf929f2c887dc490e4854b5::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit941b98cd7cf929f2c887dc490e4854b5::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit360b010f6695bae80ad6c489c245dc09::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit360b010f6695bae80ad6c489c245dc09::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit360b010f6695bae80ad6c489c245dc09::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit360b010f6695bae80ad6c489c245dc09::$classMap;
 
         }, null, ClassLoader::class);
     }

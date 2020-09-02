@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 /*
- * This file is part of PHPUnit.
+ * This file is part of sebastian/cli-parser.
  *
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace PHPUnit\Util;
+namespace SebastianBergmann\CliParser;
 
 use function array_map;
 use function array_merge;
@@ -26,15 +26,15 @@ use function strpos;
 use function strstr;
 use function substr;
 
-/**
- * @internal This class is not covered by the backward compatibility promise for PHPUnit
- */
-final class Getopt
+final class Parser
 {
     /**
-     * @throws Exception
+     * @throws AmbiguousOptionException
+     * @throws RequiredOptionArgumentMissingException
+     * @throws OptionDoesNotAllowArgumentException
+     * @throws UnknownOptionException
      */
-    public static function parse(array $args, string $short_options, array $long_options = null): array
+    public function parse(array $args, string $short_options, array $long_options = null): array
     {
         if (empty($args)) {
             return [[], []];
@@ -77,14 +77,14 @@ final class Getopt
             }
 
             if (strlen($arg) > 1 && $arg[1] === '-') {
-                self::parseLongOption(
+                $this->parseLongOption(
                     substr($arg, 2),
                     $long_options,
                     $opts,
                     $args
                 );
             } else {
-                self::parseShortOption(
+                $this->parseShortOption(
                     substr($arg, 1),
                     $short_options,
                     $opts,
@@ -97,9 +97,9 @@ final class Getopt
     }
 
     /**
-     * @throws Exception
+     * @throws RequiredOptionArgumentMissingException
      */
-    private static function parseShortOption(string $arg, string $short_options, array &$opts, array &$args): void
+    private function parseShortOption(string $arg, string $short_options, array &$opts, array &$args): void
     {
         $argLen = strlen($arg);
 
@@ -108,9 +108,7 @@ final class Getopt
             $opt_arg = null;
 
             if ($arg[$i] === ':' || ($spec = strstr($short_options, $opt)) === false) {
-                throw new Exception(
-                    "unrecognized option -- {$opt}"
-                );
+                throw new UnknownOptionException('-' . $opt);
             }
 
             if (strlen($spec) > 1 && $spec[1] === ':') {
@@ -123,9 +121,7 @@ final class Getopt
                 if (!(strlen($spec) > 2 && $spec[2] === ':')) {
                     /* @noinspection ComparisonOperandsOrderInspection */
                     if (false === $opt_arg = current($args)) {
-                        throw new Exception(
-                            "option requires an argument -- {$opt}"
-                        );
+                        throw new RequiredOptionArgumentMissingException('-' . $opt);
                     }
 
                     next($args);
@@ -137,9 +133,12 @@ final class Getopt
     }
 
     /**
-     * @throws Exception
+     * @throws AmbiguousOptionException
+     * @throws RequiredOptionArgumentMissingException
+     * @throws OptionDoesNotAllowArgumentException
+     * @throws UnknownOptionException
      */
-    private static function parseLongOption(string $arg, array $long_options, array &$opts, array &$args): void
+    private function parseLongOption(string $arg, array $long_options, array &$opts, array &$args): void
     {
         $count   = count($long_options);
         $list    = explode('=', $arg);
@@ -162,9 +161,7 @@ final class Getopt
             $opt_rest = substr($long_opt, $opt_len);
 
             if ($opt_rest !== '' && $i + 1 < $count && $opt[0] !== '=' && strpos($long_options[$i + 1], $opt) === 0) {
-                throw new Exception(
-                    "option --{$opt} is ambiguous"
-                );
+                throw new AmbiguousOptionException('--' . $opt);
             }
 
             if (substr($long_opt, -1) === '=') {
@@ -172,17 +169,13 @@ final class Getopt
                 if (substr($long_opt, -2) !== '==' && !strlen((string) $opt_arg)) {
                     /* @noinspection ComparisonOperandsOrderInspection */
                     if (false === $opt_arg = current($args)) {
-                        throw new Exception(
-                            "option --{$opt} requires an argument"
-                        );
+                        throw new RequiredOptionArgumentMissingException('--' . $opt);
                     }
 
                     next($args);
                 }
             } elseif ($opt_arg) {
-                throw new Exception(
-                    "option --{$opt} doesn't allow an argument"
-                );
+                throw new OptionDoesNotAllowArgumentException('--' . $opt);
             }
 
             $full_option = '--' . preg_replace('/={1,2}$/', '', $long_opt);
@@ -191,6 +184,6 @@ final class Getopt
             return;
         }
 
-        throw new Exception("unrecognized option --{$opt}");
+        throw new UnknownOptionException('--' . $opt);
     }
 }

@@ -9,9 +9,11 @@
  */
 namespace PHPUnit\Framework;
 
-use function define;
-use function defined;
 use function func_get_args;
+use ArrayAccess;
+use Countable;
+use DOMDocument;
+use DOMElement;
 use PHPUnit\Framework\Constraint\ArrayHasKey;
 use PHPUnit\Framework\Constraint\Callback;
 use PHPUnit\Framework\Constraint\ClassHasAttribute;
@@ -68,7 +70,7 @@ use PHPUnit\Framework\MockObject\Stub\ReturnStub;
 use PHPUnit\Framework\MockObject\Stub\ReturnValueMap as ReturnValueMapStub;
 use Throwable;
 
-if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
+if (!function_exists('PHPUnit\Framework\assertArrayHasKey')) {
     /**
      * Asserts that an array has a specified key.
      *
@@ -85,7 +87,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertArrayHasKey(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertArrayNotHasKey')) {
     /**
      * Asserts that an array does not have a specified key.
      *
@@ -102,7 +106,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertArrayNotHasKey(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertContains')) {
     /**
      * Asserts that a haystack contains a needle.
      *
@@ -116,12 +122,16 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertContains(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertContainsEquals')) {
     function assertContainsEquals($needle, iterable $haystack, string $message = ''): void
     {
         Assert::assertContainsEquals(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotContains')) {
     /**
      * Asserts that a haystack does not contain a needle.
      *
@@ -135,12 +145,16 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotContains(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotContainsEquals')) {
     function assertNotContainsEquals($needle, iterable $haystack, string $message = ''): void
     {
         Assert::assertNotContainsEquals(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertContainsOnly')) {
     /**
      * Asserts that a haystack contains only values of a given type.
      *
@@ -153,7 +167,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertContainsOnly(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertContainsOnlyInstancesOf')) {
     /**
      * Asserts that a haystack contains only instances of a given class name.
      *
@@ -166,7 +182,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertContainsOnlyInstancesOf(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotContainsOnly')) {
     /**
      * Asserts that a haystack does not contain only values of a given type.
      *
@@ -179,7 +197,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotContainsOnly(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertCount')) {
     /**
      * Asserts the number of elements of an array, Countable or Traversable.
      *
@@ -195,7 +215,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertCount(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotCount')) {
     /**
      * Asserts the number of elements of an array, Countable or Traversable.
      *
@@ -211,7 +233,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotCount(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertEquals')) {
     /**
      * Asserts that two variables are equal.
      *
@@ -224,7 +248,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertEquals(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertEqualsCanonicalizing')) {
     /**
      * Asserts that two variables are equal (canonicalizing).
      *
@@ -237,7 +263,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertEqualsCanonicalizing(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertEqualsIgnoringCase')) {
     /**
      * Asserts that two variables are equal (ignoring case).
      *
@@ -250,7 +278,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertEqualsIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertEqualsWithDelta')) {
     /**
      * Asserts that two variables are equal (with delta).
      *
@@ -263,7 +293,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertEqualsWithDelta(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotEquals')) {
     /**
      * Asserts that two variables are not equal.
      *
@@ -276,7 +308,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotEquals(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotEqualsCanonicalizing')) {
     /**
      * Asserts that two variables are not equal (canonicalizing).
      *
@@ -289,7 +323,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotEqualsCanonicalizing(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotEqualsIgnoringCase')) {
     /**
      * Asserts that two variables are not equal (ignoring case).
      *
@@ -302,7 +338,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotEqualsIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotEqualsWithDelta')) {
     /**
      * Asserts that two variables are not equal (with delta).
      *
@@ -315,7 +353,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotEqualsWithDelta(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertEmpty')) {
     /**
      * Asserts that a variable is empty.
      *
@@ -330,7 +370,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertEmpty(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotEmpty')) {
     /**
      * Asserts that a variable is not empty.
      *
@@ -345,7 +387,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotEmpty(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertGreaterThan')) {
     /**
      * Asserts that a value is greater than another value.
      *
@@ -358,7 +402,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertGreaterThan(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertGreaterThanOrEqual')) {
     /**
      * Asserts that a value is greater than or equal to another value.
      *
@@ -371,7 +417,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertGreaterThanOrEqual(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertLessThan')) {
     /**
      * Asserts that a value is smaller than another value.
      *
@@ -384,7 +432,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertLessThan(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertLessThanOrEqual')) {
     /**
      * Asserts that a value is smaller than or equal to another value.
      *
@@ -397,7 +447,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertLessThanOrEqual(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileEquals')) {
     /**
      * Asserts that the contents of one file is equal to the contents of another
      * file.
@@ -411,7 +463,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileEquals(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileEqualsCanonicalizing')) {
     /**
      * Asserts that the contents of one file is equal to the contents of another
      * file (canonicalizing).
@@ -425,7 +479,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileEqualsCanonicalizing(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileEqualsIgnoringCase')) {
     /**
      * Asserts that the contents of one file is equal to the contents of another
      * file (ignoring case).
@@ -439,7 +495,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileEqualsIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileNotEquals')) {
     /**
      * Asserts that the contents of one file is not equal to the contents of
      * another file.
@@ -453,7 +511,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileNotEquals(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileNotEqualsCanonicalizing')) {
     /**
      * Asserts that the contents of one file is not equal to the contents of another
      * file (canonicalizing).
@@ -467,7 +527,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileNotEqualsCanonicalizing(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileNotEqualsIgnoringCase')) {
     /**
      * Asserts that the contents of one file is not equal to the contents of another
      * file (ignoring case).
@@ -481,7 +543,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileNotEqualsIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringEqualsFile')) {
     /**
      * Asserts that the contents of a string is equal
      * to the contents of a file.
@@ -495,7 +559,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringEqualsFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringEqualsFileCanonicalizing')) {
     /**
      * Asserts that the contents of a string is equal
      * to the contents of a file (canonicalizing).
@@ -509,7 +575,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringEqualsFileCanonicalizing(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringEqualsFileIgnoringCase')) {
     /**
      * Asserts that the contents of a string is equal
      * to the contents of a file (ignoring case).
@@ -523,7 +591,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringEqualsFileIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringNotEqualsFile')) {
     /**
      * Asserts that the contents of a string is not equal
      * to the contents of a file.
@@ -537,7 +607,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringNotEqualsFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringNotEqualsFileCanonicalizing')) {
     /**
      * Asserts that the contents of a string is not equal
      * to the contents of a file (canonicalizing).
@@ -551,7 +623,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringNotEqualsFileCanonicalizing(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringNotEqualsFileIgnoringCase')) {
     /**
      * Asserts that the contents of a string is not equal
      * to the contents of a file (ignoring case).
@@ -565,7 +639,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringNotEqualsFileIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsReadable')) {
     /**
      * Asserts that a file/dir is readable.
      *
@@ -578,7 +654,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotReadable')) {
     /**
      * Asserts that a file/dir exists and is not readable.
      *
@@ -591,7 +669,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotIsReadable')) {
     /**
      * Asserts that a file/dir exists and is not readable.
      *
@@ -607,7 +687,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotIsReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsWritable')) {
     /**
      * Asserts that a file/dir exists and is writable.
      *
@@ -620,7 +702,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotWritable')) {
     /**
      * Asserts that a file/dir exists and is not writable.
      *
@@ -633,7 +717,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotIsWritable')) {
     /**
      * Asserts that a file/dir exists and is not writable.
      *
@@ -649,7 +735,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotIsWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryExists')) {
     /**
      * Asserts that a directory exists.
      *
@@ -662,7 +750,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryExists(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryDoesNotExist')) {
     /**
      * Asserts that a directory does not exist.
      *
@@ -675,7 +765,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryDoesNotExist(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryNotExists')) {
     /**
      * Asserts that a directory does not exist.
      *
@@ -691,7 +783,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryNotExists(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryIsReadable')) {
     /**
      * Asserts that a directory exists and is readable.
      *
@@ -704,7 +798,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryIsReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryIsNotReadable')) {
     /**
      * Asserts that a directory exists and is not readable.
      *
@@ -717,7 +813,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryIsNotReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryNotIsReadable')) {
     /**
      * Asserts that a directory exists and is not readable.
      *
@@ -733,7 +831,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryNotIsReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryIsWritable')) {
     /**
      * Asserts that a directory exists and is writable.
      *
@@ -746,7 +846,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryIsWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryIsNotWritable')) {
     /**
      * Asserts that a directory exists and is not writable.
      *
@@ -759,7 +861,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryIsNotWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDirectoryNotIsWritable')) {
     /**
      * Asserts that a directory exists and is not writable.
      *
@@ -775,7 +879,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDirectoryNotIsWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileExists')) {
     /**
      * Asserts that a file exists.
      *
@@ -788,7 +894,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileExists(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileDoesNotExist')) {
     /**
      * Asserts that a file does not exist.
      *
@@ -801,7 +909,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileDoesNotExist(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileNotExists')) {
     /**
      * Asserts that a file does not exist.
      *
@@ -817,7 +927,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileNotExists(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileIsReadable')) {
     /**
      * Asserts that a file exists and is readable.
      *
@@ -830,7 +942,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileIsReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileIsNotReadable')) {
     /**
      * Asserts that a file exists and is not readable.
      *
@@ -843,7 +957,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileIsNotReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileNotIsReadable')) {
     /**
      * Asserts that a file exists and is not readable.
      *
@@ -859,7 +975,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileNotIsReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileIsWritable')) {
     /**
      * Asserts that a file exists and is writable.
      *
@@ -872,7 +990,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileIsWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileIsNotWritable')) {
     /**
      * Asserts that a file exists and is not writable.
      *
@@ -885,7 +1005,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileIsNotWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFileNotIsWritable')) {
     /**
      * Asserts that a file exists and is not writable.
      *
@@ -901,7 +1023,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFileNotIsWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertTrue')) {
     /**
      * Asserts that a condition is true.
      *
@@ -916,7 +1040,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertTrue(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotTrue')) {
     /**
      * Asserts that a condition is not true.
      *
@@ -931,7 +1057,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotTrue(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFalse')) {
     /**
      * Asserts that a condition is false.
      *
@@ -946,7 +1074,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFalse(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotFalse')) {
     /**
      * Asserts that a condition is not false.
      *
@@ -961,7 +1091,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotFalse(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNull')) {
     /**
      * Asserts that a variable is null.
      *
@@ -976,7 +1108,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNull(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotNull')) {
     /**
      * Asserts that a variable is not null.
      *
@@ -991,7 +1125,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotNull(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertFinite')) {
     /**
      * Asserts that a variable is finite.
      *
@@ -1004,7 +1140,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertFinite(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertInfinite')) {
     /**
      * Asserts that a variable is infinite.
      *
@@ -1017,7 +1155,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertInfinite(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNan')) {
     /**
      * Asserts that a variable is nan.
      *
@@ -1030,7 +1170,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNan(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertClassHasAttribute')) {
     /**
      * Asserts that a class has a specified attribute.
      *
@@ -1044,7 +1186,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertClassHasAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertClassNotHasAttribute')) {
     /**
      * Asserts that a class does not have a specified attribute.
      *
@@ -1058,7 +1202,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertClassNotHasAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertClassHasStaticAttribute')) {
     /**
      * Asserts that a class has a specified static attribute.
      *
@@ -1072,7 +1218,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertClassHasStaticAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertClassNotHasStaticAttribute')) {
     /**
      * Asserts that a class does not have a specified static attribute.
      *
@@ -1086,7 +1234,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertClassNotHasStaticAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertObjectHasAttribute')) {
     /**
      * Asserts that an object has a specified attribute.
      *
@@ -1102,7 +1252,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertObjectHasAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertObjectNotHasAttribute')) {
     /**
      * Asserts that an object does not have a specified attribute.
      *
@@ -1118,7 +1270,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertObjectNotHasAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertSame')) {
     /**
      * Asserts that two variables have the same type and value.
      * Used on objects, it asserts that two variables reference
@@ -1137,7 +1291,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertSame(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotSame')) {
     /**
      * Asserts that two variables do not have the same type and value.
      * Used on objects, it asserts that two variables do not reference
@@ -1152,7 +1308,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotSame(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertInstanceOf')) {
     /**
      * Asserts that a variable is of a given type.
      *
@@ -1170,7 +1328,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertInstanceOf(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotInstanceOf')) {
     /**
      * Asserts that a variable is not of a given type.
      *
@@ -1188,7 +1348,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotInstanceOf(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsArray')) {
     /**
      * Asserts that a variable is of type array.
      *
@@ -1203,7 +1365,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsArray(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsBool')) {
     /**
      * Asserts that a variable is of type bool.
      *
@@ -1218,7 +1382,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsBool(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsFloat')) {
     /**
      * Asserts that a variable is of type float.
      *
@@ -1233,7 +1399,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsFloat(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsInt')) {
     /**
      * Asserts that a variable is of type int.
      *
@@ -1248,7 +1416,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsInt(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNumeric')) {
     /**
      * Asserts that a variable is of type numeric.
      *
@@ -1263,7 +1433,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNumeric(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsObject')) {
     /**
      * Asserts that a variable is of type object.
      *
@@ -1278,7 +1450,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsObject(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsResource')) {
     /**
      * Asserts that a variable is of type resource.
      *
@@ -1293,7 +1467,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsResource(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsClosedResource')) {
     /**
      * Asserts that a variable is of type resource and is closed.
      *
@@ -1308,7 +1484,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsClosedResource(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsString')) {
     /**
      * Asserts that a variable is of type string.
      *
@@ -1323,7 +1501,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsString(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsScalar')) {
     /**
      * Asserts that a variable is of type scalar.
      *
@@ -1338,7 +1518,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsScalar(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsCallable')) {
     /**
      * Asserts that a variable is of type callable.
      *
@@ -1353,7 +1535,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsCallable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsIterable')) {
     /**
      * Asserts that a variable is of type iterable.
      *
@@ -1368,7 +1552,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsIterable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotArray')) {
     /**
      * Asserts that a variable is not of type array.
      *
@@ -1383,7 +1569,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotArray(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotBool')) {
     /**
      * Asserts that a variable is not of type bool.
      *
@@ -1398,7 +1586,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotBool(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotFloat')) {
     /**
      * Asserts that a variable is not of type float.
      *
@@ -1413,7 +1603,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotFloat(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotInt')) {
     /**
      * Asserts that a variable is not of type int.
      *
@@ -1428,7 +1620,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotInt(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotNumeric')) {
     /**
      * Asserts that a variable is not of type numeric.
      *
@@ -1443,7 +1637,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotNumeric(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotObject')) {
     /**
      * Asserts that a variable is not of type object.
      *
@@ -1458,7 +1654,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotObject(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotResource')) {
     /**
      * Asserts that a variable is not of type resource.
      *
@@ -1473,7 +1671,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotResource(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotClosedResource')) {
     /**
      * Asserts that a variable is not of type resource.
      *
@@ -1488,7 +1688,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotClosedResource(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotString')) {
     /**
      * Asserts that a variable is not of type string.
      *
@@ -1503,7 +1705,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotString(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotScalar')) {
     /**
      * Asserts that a variable is not of type scalar.
      *
@@ -1518,7 +1722,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotScalar(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotCallable')) {
     /**
      * Asserts that a variable is not of type callable.
      *
@@ -1533,7 +1739,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotCallable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertIsNotIterable')) {
     /**
      * Asserts that a variable is not of type iterable.
      *
@@ -1548,7 +1756,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertIsNotIterable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertMatchesRegularExpression')) {
     /**
      * Asserts that a string matches a given regular expression.
      *
@@ -1561,7 +1771,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertMatchesRegularExpression(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertRegExp')) {
     /**
      * Asserts that a string matches a given regular expression.
      *
@@ -1577,7 +1789,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertRegExp(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertDoesNotMatchRegularExpression')) {
     /**
      * Asserts that a string does not match a given regular expression.
      *
@@ -1590,7 +1804,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertDoesNotMatchRegularExpression(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotRegExp')) {
     /**
      * Asserts that a string does not match a given regular expression.
      *
@@ -1606,7 +1822,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotRegExp(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertSameSize')) {
     /**
      * Assert that the size of two arrays (or `Countable` or `Traversable` objects)
      * is the same.
@@ -1624,7 +1842,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertSameSize(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertNotSameSize')) {
     /**
      * Assert that the size of two arrays (or `Countable` or `Traversable` objects)
      * is not the same.
@@ -1642,7 +1862,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertNotSameSize(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringMatchesFormat')) {
     /**
      * Asserts that a string matches a given format string.
      *
@@ -1655,7 +1877,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringMatchesFormat(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringNotMatchesFormat')) {
     /**
      * Asserts that a string does not match a given format string.
      *
@@ -1668,7 +1892,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringNotMatchesFormat(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringMatchesFormatFile')) {
     /**
      * Asserts that a string matches a given format file.
      *
@@ -1681,7 +1907,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringMatchesFormatFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringNotMatchesFormatFile')) {
     /**
      * Asserts that a string does not match a given format string.
      *
@@ -1694,7 +1922,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringNotMatchesFormatFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringStartsWith')) {
     /**
      * Asserts that a string starts with a given prefix.
      *
@@ -1707,7 +1937,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringStartsWith(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringStartsNotWith')) {
     /**
      * Asserts that a string starts not with a given prefix.
      *
@@ -1723,7 +1955,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringStartsNotWith(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringContainsString')) {
     /**
      * @throws ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
@@ -1734,7 +1968,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringContainsString(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringContainsStringIgnoringCase')) {
     /**
      * @throws ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
@@ -1745,7 +1981,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringContainsStringIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringNotContainsString')) {
     /**
      * @throws ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
@@ -1756,7 +1994,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringNotContainsString(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringNotContainsStringIgnoringCase')) {
     /**
      * @throws ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
@@ -1767,7 +2007,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringNotContainsStringIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringEndsWith')) {
     /**
      * Asserts that a string ends with a given suffix.
      *
@@ -1780,7 +2022,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringEndsWith(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertStringEndsNotWith')) {
     /**
      * Asserts that a string ends not with a given suffix.
      *
@@ -1793,7 +2037,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertStringEndsNotWith(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertXmlFileEqualsXmlFile')) {
     /**
      * Asserts that two XML files are equal.
      *
@@ -1807,7 +2053,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertXmlFileEqualsXmlFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertXmlFileNotEqualsXmlFile')) {
     /**
      * Asserts that two XML files are not equal.
      *
@@ -1821,7 +2069,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertXmlFileNotEqualsXmlFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertXmlStringEqualsXmlFile')) {
     /**
      * Asserts that two XML documents are equal.
      *
@@ -1837,7 +2087,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertXmlStringEqualsXmlFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertXmlStringNotEqualsXmlFile')) {
     /**
      * Asserts that two XML documents are not equal.
      *
@@ -1853,7 +2105,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertXmlStringNotEqualsXmlFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertXmlStringEqualsXmlString')) {
     /**
      * Asserts that two XML documents are equal.
      *
@@ -1870,7 +2124,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertXmlStringEqualsXmlString(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertXmlStringNotEqualsXmlString')) {
     /**
      * Asserts that two XML documents are not equal.
      *
@@ -1887,7 +2143,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertXmlStringNotEqualsXmlString(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertEqualXMLStructure')) {
     /**
      * Asserts that a hierarchy of DOMElements matches.
      *
@@ -1904,7 +2162,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertEqualXMLStructure(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertThat')) {
     /**
      * Evaluates a PHPUnit\Framework\Constraint matcher object.
      *
@@ -1917,7 +2177,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertThat(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertJson')) {
     /**
      * Asserts that a string is a valid JSON string.
      *
@@ -1930,7 +2192,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertJson(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertJsonStringEqualsJsonString')) {
     /**
      * Asserts that two given JSON encoded objects or arrays are equal.
      *
@@ -1943,7 +2207,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertJsonStringEqualsJsonString(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertJsonStringNotEqualsJsonString')) {
     /**
      * Asserts that two given JSON encoded objects or arrays are not equal.
      *
@@ -1959,7 +2225,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertJsonStringNotEqualsJsonString(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertJsonStringEqualsJsonFile')) {
     /**
      * Asserts that the generated JSON encoded object and the content of the given file are equal.
      *
@@ -1972,7 +2240,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertJsonStringEqualsJsonFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertJsonStringNotEqualsJsonFile')) {
     /**
      * Asserts that the generated JSON encoded object and the content of the given file are not equal.
      *
@@ -1985,7 +2255,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertJsonStringNotEqualsJsonFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertJsonFileEqualsJsonFile')) {
     /**
      * Asserts that two JSON files are equal.
      *
@@ -1998,7 +2270,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertJsonFileEqualsJsonFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\assertJsonFileNotEqualsJsonFile')) {
     /**
      * Asserts that two JSON files are not equal.
      *
@@ -2011,222 +2285,310 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         Assert::assertJsonFileNotEqualsJsonFile(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\logicalAnd')) {
     function logicalAnd(): LogicalAnd
     {
         return Assert::logicalAnd(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\logicalOr')) {
     function logicalOr(): LogicalOr
     {
         return Assert::logicalOr(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\logicalNot')) {
     function logicalNot(Constraint $constraint): LogicalNot
     {
         return Assert::logicalNot(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\logicalXor')) {
     function logicalXor(): LogicalXor
     {
         return Assert::logicalXor(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\anything')) {
     function anything(): IsAnything
     {
         return Assert::anything(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isTrue')) {
     function isTrue(): IsTrue
     {
         return Assert::isTrue(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\callback')) {
     function callback(callable $callback): Callback
     {
         return Assert::callback(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isFalse')) {
     function isFalse(): IsFalse
     {
         return Assert::isFalse(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isJson')) {
     function isJson(): IsJson
     {
         return Assert::isJson(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isNull')) {
     function isNull(): IsNull
     {
         return Assert::isNull(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isFinite')) {
     function isFinite(): IsFinite
     {
         return Assert::isFinite(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isInfinite')) {
     function isInfinite(): IsInfinite
     {
         return Assert::isInfinite(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isNan')) {
     function isNan(): IsNan
     {
         return Assert::isNan(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\containsEqual')) {
     function containsEqual($value): TraversableContainsEqual
     {
         return Assert::containsEqual(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\containsIdentical')) {
     function containsIdentical($value): TraversableContainsIdentical
     {
         return Assert::containsIdentical(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\containsOnly')) {
     function containsOnly(string $type): TraversableContainsOnly
     {
         return Assert::containsOnly(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\containsOnlyInstancesOf')) {
     function containsOnlyInstancesOf(string $className): TraversableContainsOnly
     {
         return Assert::containsOnlyInstancesOf(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\arrayHasKey')) {
     function arrayHasKey($key): ArrayHasKey
     {
         return Assert::arrayHasKey(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\equalTo')) {
     function equalTo($value): IsEqual
     {
         return Assert::equalTo(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\equalToCanonicalizing')) {
     function equalToCanonicalizing($value): IsEqualCanonicalizing
     {
         return Assert::equalToCanonicalizing(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\equalToIgnoringCase')) {
     function equalToIgnoringCase($value): IsEqualIgnoringCase
     {
         return Assert::equalToIgnoringCase(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\equalToWithDelta')) {
     function equalToWithDelta($value, float $delta): IsEqualWithDelta
     {
         return Assert::equalToWithDelta(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isEmpty')) {
     function isEmpty(): IsEmpty
     {
         return Assert::isEmpty(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isWritable')) {
     function isWritable(): IsWritable
     {
         return Assert::isWritable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isReadable')) {
     function isReadable(): IsReadable
     {
         return Assert::isReadable(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\directoryExists')) {
     function directoryExists(): DirectoryExists
     {
         return Assert::directoryExists(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\fileExists')) {
     function fileExists(): FileExists
     {
         return Assert::fileExists(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\greaterThan')) {
     function greaterThan($value): GreaterThan
     {
         return Assert::greaterThan(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\greaterThanOrEqual')) {
     function greaterThanOrEqual($value): LogicalOr
     {
         return Assert::greaterThanOrEqual(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\classHasAttribute')) {
     function classHasAttribute(string $attributeName): ClassHasAttribute
     {
         return Assert::classHasAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\classHasStaticAttribute')) {
     function classHasStaticAttribute(string $attributeName): ClassHasStaticAttribute
     {
         return Assert::classHasStaticAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\objectHasAttribute')) {
     function objectHasAttribute($attributeName): ObjectHasAttribute
     {
         return Assert::objectHasAttribute(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\identicalTo')) {
     function identicalTo($value): IsIdentical
     {
         return Assert::identicalTo(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isInstanceOf')) {
     function isInstanceOf(string $className): IsInstanceOf
     {
         return Assert::isInstanceOf(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\isType')) {
     function isType(string $type): IsType
     {
         return Assert::isType(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\lessThan')) {
     function lessThan($value): LessThan
     {
         return Assert::lessThan(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\lessThanOrEqual')) {
     function lessThanOrEqual($value): LogicalOr
     {
         return Assert::lessThanOrEqual(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\matchesRegularExpression')) {
     function matchesRegularExpression(string $pattern): RegularExpression
     {
         return Assert::matchesRegularExpression(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\matches')) {
     function matches(string $string): StringMatchesFormatDescription
     {
         return Assert::matches(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\stringStartsWith')) {
     function stringStartsWith($prefix): StringStartsWith
     {
         return Assert::stringStartsWith(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\stringContains')) {
     function stringContains(string $string, bool $case = true): StringContains
     {
         return Assert::stringContains(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\stringEndsWith')) {
     function stringEndsWith(string $suffix): StringEndsWith
     {
         return Assert::stringEndsWith(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\countOf')) {
     function countOf(int $count): Count
     {
         return Assert::countOf(...func_get_args());
     }
+}
 
+if (!function_exists('PHPUnit\Framework\any')) {
     /**
      * Returns a matcher that matches when the method is executed
      * zero or more times.
@@ -2235,7 +2597,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         return new AnyInvokedCountMatcher;
     }
+}
 
+if (!function_exists('PHPUnit\Framework\never')) {
     /**
      * Returns a matcher that matches when the method is never executed.
      */
@@ -2243,7 +2607,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         return new InvokedCountMatcher(0);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\atLeast')) {
     /**
      * Returns a matcher that matches when the method is executed
      * at least N times.
@@ -2254,7 +2620,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
             $requiredInvocations
         );
     }
+}
 
+if (!function_exists('PHPUnit\Framework\atLeastOnce')) {
     /**
      * Returns a matcher that matches when the method is executed at least once.
      */
@@ -2262,7 +2630,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         return new InvokedAtLeastOnceMatcher;
     }
+}
 
+if (!function_exists('PHPUnit\Framework\once')) {
     /**
      * Returns a matcher that matches when the method is executed exactly once.
      */
@@ -2270,7 +2640,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         return new InvokedCountMatcher(1);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\exactly')) {
     /**
      * Returns a matcher that matches when the method is executed
      * exactly $count times.
@@ -2279,7 +2651,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         return new InvokedCountMatcher($count);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\atMost')) {
     /**
      * Returns a matcher that matches when the method is executed
      * at most N times.
@@ -2288,7 +2662,9 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         return new InvokedAtMostCountMatcher($allowedInvocations);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\at')) {
     /**
      * Returns a matcher that matches when the method is executed
      * at the given index.
@@ -2297,27 +2673,37 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         return new InvokedAtIndexMatcher($index);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\returnValue')) {
     function returnValue($value): ReturnStub
     {
         return new ReturnStub($value);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\returnValueMap')) {
     function returnValueMap(array $valueMap): ReturnValueMapStub
     {
         return new ReturnValueMapStub($valueMap);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\returnArgument')) {
     function returnArgument(int $argumentIndex): ReturnArgumentStub
     {
         return new ReturnArgumentStub($argumentIndex);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\returnCallback')) {
     function returnCallback($callback): ReturnCallbackStub
     {
         return new ReturnCallbackStub($callback);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\returnSelf')) {
     /**
      * Returns the current object.
      *
@@ -2327,18 +2713,20 @@ if (!defined('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__')) {
     {
         return new ReturnSelfStub;
     }
+}
 
+if (!function_exists('PHPUnit\Framework\throwException')) {
     function throwException(Throwable $exception): ExceptionStub
     {
         return new ExceptionStub($exception);
     }
+}
 
+if (!function_exists('PHPUnit\Framework\onConsecutiveCalls')) {
     function onConsecutiveCalls(): ConsecutiveCallsStub
     {
         $args = func_get_args();
 
         return new ConsecutiveCallsStub($args);
     }
-
-    define('__PHPUNIT_GLOBAL_ASSERT_WRAPPERS__', true);
 }
